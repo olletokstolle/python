@@ -5,7 +5,7 @@ import codecs
 Simple stuff for making it easier to play around with twitter.
 """
 
-def auth()
+def auth():
 
     #Handles authentication.
 
