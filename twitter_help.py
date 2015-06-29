@@ -1,8 +1,13 @@
 import tweepy
 import codecs
 
-def auth():
-    #handles authentication
+"""
+Simple stuff for making it easier to play around with twitter.
+"""
+
+def auth()
+
+    #Handles authentication.
 
     api_key = ""
     api_secret = ""
@@ -16,7 +21,8 @@ def auth():
     api = tweepy.API(auth, wait_on_rate_limit = True)
 
 def collect_tweets(user):
-    #collects tweets from specific user, txtfile output.
+
+    #Collects tweets from specific user, txtfile output.
 
     tweets = tweepy.Cursor(api.user_timeline, id=user).items()
 
@@ -26,7 +32,8 @@ def collect_tweets(user):
             output.write(tweet.text+"\n")
 
 def publish_tweet(string):
-    #for actual tweeting
+
+    #For actual tweeting!
 
     api.update_status(status=string)
 
