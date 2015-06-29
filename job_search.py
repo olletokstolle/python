@@ -8,12 +8,12 @@ import sqlite3
 This program scrapes Workey.se, a swedish search engine for job advertisements. Feed it a list of keywords and it saves the amount of hits in a database file.
 """
 
-def init():
+def init(db_name):
 
     #Creates the database.
 
     global db
-    db = sqlite3.connect('jobdb')
+    db = sqlite3.connect(db_name)
 
     global cursor
     cursor = db.cursor()
@@ -44,7 +44,7 @@ def job_searcher(lst):
 
 if __name__ == '__main__':
 
-    init()
+    init("jobdb")
 
     #Example keywords.
 
