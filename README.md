@@ -7,3 +7,4 @@ This is where I put most of my short python scripts.
 |twitter_help.py|           |
 |job_search.py  |           |
 |wordcount.py   |           |
+|imdb_scrape.py |           |
