@@ -3,7 +3,7 @@ import time
 import argparse
 
 """
-Simple lazygit commit+push combo script.
+Simple commit+push combo script.
 
 Usage:
 
