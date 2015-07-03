@@ -2,23 +2,29 @@ import subprocess
 import time
 import argparse
 
-def git_combo(filename, commit_message):
+"""
+Simple lazygit commit+push combo script.
 
-    #Lazy stuff.
+Usage:
 
-    subprocess.call('git add '+filename, shell=True)
-    subprocess.call('git commit -m "'+commit_message+'"', shell=True)
+python git_combo.py "commit message"
+"""
+
+def git_combo(commit_message):
+
+    #Lazy stuff. Git commit+push combo.
+
+    subprocess.call('git commit -a -m "'+commit_message+'"', shell=True)
     subprocess.call("git push -u origin master", shell=True)
 
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Git add-commit-push combo script.')
-    parser.add_argument("file", help="file name.", type=str)
+    parser = argparse.ArgumentParser(description='Git script.')
     parser.add_argument("commit", help="commit message", type=str)
 
     args = parser.parse_args()
 
-    git_combo(args.file, args.commit)
+    git_combo(args.commit)
 
 
