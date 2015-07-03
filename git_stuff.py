@@ -11,7 +11,7 @@ def git_combo(filename, commit_message):
     time.sleep(5)
     subprocess.call('git commit -m "'+commit_message+'"', shell=True)
     time.sleep(5)
-    subprocess.call("git push -u origin master")
+    subprocess.call("git push -u origin master", shell=True)
     time.sleep(5)
 
 
