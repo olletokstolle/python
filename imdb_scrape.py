@@ -4,7 +4,8 @@ import sqlite3
 import os
 
 """
-Scraper for imdb. Collects info (title, year, rating, amount of votes) on all directed films of a given director. Saves the results in a sqlite database.
+Scraper for imdb.com. Collects info (title, year, rating, amount of votes) on all directed films of a given director.
+Saves the results in a sqlite database.
 """
 
 
@@ -30,7 +31,10 @@ def init(db_name):
 
 def scrape_director(imdb_id):
 
-    #Collects the info. The string imdb_id is the last part of the url. For example Christopher Nolan has the id "nm0634240" (full url: http://www.imdb.com/name/nm0634240).
+    """
+    Collects the info. imdb_id is a string, the last part of the url.
+    For example Christopher Nolan has the id "nm0634240" (full url: http://www.imdb.com/name/nm0634240).
+    """
 
     url = "http://www.imdb.com/name/" + imdb_id
 
