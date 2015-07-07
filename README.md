@@ -11,3 +11,4 @@ This is where I put most of my short python scripts.
 |git_combo.py| Git commit+push combo script.|
 | update_readme.py | Updates this table. |
 | quizzing.py | Multiple choice quiz program. |
+| fund_scrape.py | Collects equity fund data. |
