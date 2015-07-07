@@ -21,11 +21,10 @@ def init(db_name):
 
     global cursor
     cursor = db.cursor()
-    
+
     if create:
         cursor.execute('''CREATE TABLE words(word TEXT, count INT) ''')
         db.commit()
-
 
 def strip_punctuation(filename):
 
@@ -39,7 +38,6 @@ def strip_punctuation(filename):
         file.seek(0)
         file.write(output)
         file.truncate()
-            
 
 def count_words(filename):
 
@@ -60,8 +58,6 @@ def count_words(filename):
         cursor.execute('''INSERT INTO words(word, count) VALUES(?, ?)''', (k.lower(), v))
         db.commit()
 
-    
-
 def get_word_occurence(word):
 
     #Returns the occurence of a specific word in the database. If fed a string with more than one word it will count all given words separately.
@@ -69,32 +65,32 @@ def get_word_occurence(word):
     word = word.lower()
 
     if len(word.split(" ")) == 1:
-        
+
         cursor.execute('''SELECT * FROM words WHERE word = ?''', (word,))
         results = cursor.fetchone()
-    
-        if results != None:
-            print("\n Your chosen word '" + results[0] + "' is encountered " + str(results[1]) + " times in the text.")
+
+        if results:
+            print("\n Your chosen word '{}' is encountered {} times in the text.".format(results[0], str(results[1])))
         else:
-            print("\n The word '" + word + "' is not found.")
+            print("\n The word '{}' is not found.".format(word))
 
     elif len(word.split(" ")) > 1:
 
         for w in word.split(" "):
             cursor.execute('''SELECT * FROM words WHERE word = ?''', (w,))
             results = cursor.fetchone()
-    
-            if results != None:
-                print("\n Your chosen word '" + results[0] + "' is encountered " + str(results[1]) + " times in the text.")
+
+            if results:
+                print("\n Your chosen word '{}' is encountered {} times in the text.".format(results[0], str(results[1])))
             else:
-                print("\n The word '" + w + "' is not found in the text.")
+                print("\n The word '{}' is not found.".format(word))
 
 def close_db():
 
     #Umm... yeah.
 
     db.close()
-        
 
 if __name__ == "__main__":
+
     pass
