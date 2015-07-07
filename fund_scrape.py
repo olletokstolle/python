@@ -73,17 +73,8 @@ def send_email(toplist, specific):
 
     #This first part generates content strings from the dictionaries.
 
-    top_content = ""
-    specific_content = ""
-
-    for k,v in toplist.items():
-        top_content += k + " - " + v
-        top_content += "% \n"
-
-    for k,v in specific.items():
-        specific_content += k + " - " + v
-        specific_content += "% \n"
-
+    top_content = "".join("{} - {}% \n".format(k,v) for (k,v) in toplist.items())
+    specific_content = "".join("{} - {}% \n".format(k,v) for (k,v) in specific.items())
 
     #And here is where the actual mail sending happens. I use my localhost smtp-server.
 
