@@ -18,6 +18,7 @@ python quizzing.py philosophy.csv [-n number of questions]
 def init():
 
     #Just a fancy welcome to the quiz-thing.
+
     colorama.init()
     os.system("clear")
     print(Fore.MAGENTA + "\n Welcome to...")
@@ -44,18 +45,23 @@ def quiz(filename, num_questions=10):
     questions = 0
 
     with open(filename) as csv_object:
+
         reader = list(csv.DictReader(csv_object, delimiter=';'))
 
         while questions < num_questions:
+
             questions += 1
             row = random.choice(reader)
             print(" Question #{}:\n\n {} \n\n Choices:\n\n {} \n".format(questions,row["question"],row["alts"]))
             answer = input(" Which number is correct? >> ")
+
             if answer == row["correct"]:
                 score += 1
                 print(Fore.BLACK + Back.GREEN +"\n Correct answer. Current score: {} ({}%)\n".format(score,round((score/questions)*100,2)))
+
             else:
                 print(Fore.WHITE + Back.RED +"\n Incorrect answer. Current score: {} ({}%)\n".format(score,round((score/questions)*100,2)))
+
             print(Back.RESET+Fore.MAGENTA+"Continues in two seconds..")
             time.sleep(2)
             os.system("clear")
