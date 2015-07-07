@@ -43,31 +43,29 @@ def quiz(filename, num_questions=10):
     os.system("clear")
 
     score = 0
-    questions = 0
 
     with open(filename) as csv_object:
 
         reader = list(csv.DictReader(csv_object, delimiter=';'))
 
-        while questions < num_questions:
+        for question in range(num_questions):
 
-            questions += 1
             row = random.choice(reader)
-            print(" Question #{}:\n\n {} \n\n Choices:\n\n {} \n".format(questions,row["question"],row["alts"]))
+            print(" Question #{}:\n\n {} \n\n Choices:\n\n {} \n".format(question+1,row["question"],row["alts"]))
             answer = input(" Which number is correct? >> ")
 
             if answer == row["correct"]:
                 score += 1
-                print(Fore.BLACK + Back.GREEN +"\n Correct answer. Current score: {} ({}%)\n".format(score,round((score/questions)*100,2)))
+                print(Fore.BLACK + Back.GREEN +"\n Correct answer. Current score: {} ({}%)\n".format(score,round((score/(question+1)*100),2)))
 
             else:
-                print(Fore.WHITE + Back.RED +"\n Incorrect answer. Current score: {} ({}%)\n".format(score,round((score/questions)*100,2)))
+                print(Fore.WHITE + Back.RED +"\n Incorrect answer. Current score: {} ({}%)\n".format(score,round((score/(question+1)*100),2)))
 
             print(Back.RESET+Fore.MAGENTA+"Continues in two seconds..")
             time.sleep(2)
             os.system("clear")
 
-        print(" Quiz finished. Final score: {} ({}% correct)\n".format(score,round((score/questions)*100,2)))
+        print("\n Quiz finished. Final score: {} ({}% correct)\n".format(score,round((score/(question+1)*100),2)))
         os.system("""bash -c 'read -s -n 1 -p " Press any key to stop quizzing.\n"'""")
         quit()
 
