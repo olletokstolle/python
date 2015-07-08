@@ -10,7 +10,7 @@ import os
 
 def init(db_name):
 
-    #Connects to the database and creates a table if needed.
+    """Connects to the database and creates a table if needed."""
 
     if os.path.isfile(db_name):
         create = False
@@ -74,7 +74,7 @@ def scrape_director(imdb_id):
 
 def close_db():
 
-    #For proper closing!
+    """For proper closing!"""
 
     db.close()
 
