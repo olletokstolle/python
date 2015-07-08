@@ -1,5 +1,4 @@
-"""
-Simple multiple choice quiz program for answering questions. Could potentially be useful for studying, I guess.
+"""Simple multiple choice quiz program for answering questions. Could potentially be useful for studying, I guess.
 
 Reads the questions from a .csv-file (semicolon delimited) with the following four columns:
 id (just a number, use not yet implemented), question (the actual question), alts (the different choices), correct (correct choice number).
@@ -17,8 +16,7 @@ import colorama
 from colorama import Back, Fore
 
 def init():
-
-    #Just a fancy welcome to the quiz-thing.
+    """Just a fancy welcome to the quiz-thing."""
 
     colorama.init()
     os.system("clear")
@@ -35,8 +33,7 @@ def init():
         """)
 
 def quiz(filename, num_questions=10):
-
-    #The actual quiz.
+    """The actual quiz."""
 
     print(Fore.MAGENTA + " Questions pulled from {}. Number of questions to answer: {} \n".format(filename, num_questions))
 
