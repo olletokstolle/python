@@ -11,7 +11,7 @@ import time
 
 def auth():
 
-    #Handles authentication.
+    """Handles authentication."""
 
     api_key = ""
     api_secret = ""
@@ -27,7 +27,7 @@ def auth():
 
 def collect_tweets(user):
 
-    #Collects tweets from a specific user, txtfile output.
+    """Collects tweets from a specific user, txtfile output."""
 
     tweets = tweepy.Cursor(api.user_timeline, id=user).items()
 
@@ -39,7 +39,7 @@ def collect_tweets(user):
 
 def publish_tweet(string):
 
-    #For actual tweeting!
+    """For actual tweeting!"""
 
     if len(string) <= 140:
         api.update_status(status=string)
@@ -50,7 +50,10 @@ def publish_tweet(string):
 
 def tweet_queue(txtfile, hour_interval):
 
-    #Publishes tweets randomly picked from a textfile. Variables: txtfile (string), hour_interval (int).
+    """
+    Publishes tweets randomly picked from a textfile.
+    Variables: txtfile (string), hour_interval (int).
+    """
 
     if os.path.isfile(txtfile) == False:
         print("File "+txtfile+" doesn't exist.")
