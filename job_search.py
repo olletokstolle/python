@@ -10,7 +10,7 @@ import sqlite3
 
 def init(db_name):
 
-    #Creates the database.
+    """Creates the database."""
 
     global db
     db = sqlite3.connect(db_name)
@@ -24,7 +24,7 @@ def init(db_name):
 
 def job_searcher(lst):
 
-    #Does the actual searching/scraping.
+    """Does the actual searching/scraping."""
 
     today = datetime.date.today()
 
