@@ -12,7 +12,7 @@ import argparse
 
 def git_combo(commit_message):
 
-    #Lazy stuff. Git commit+push combo.
+    """Lazy stuff. Git commit+push combo."""
 
     subprocess.call('git add --all', shell=True)
     subprocess.call('git commit -a -m "'+commit_message+'"', shell=True)
