@@ -1,10 +1,18 @@
-"""Simple multiple choice quiz program for answering questions. Could potentially be useful for studying, I guess.
+"""
+Simple multiple choice quiz program for answering questions.
+Could potentially be useful for studying, I guess.
 
 Reads the questions from a .csv-file (semicolon delimited) with the following four columns:
-id (just a number, use not yet implemented), question (the actual question), alts (the different choices), correct (correct choice number).
+
+id (just a number, use not yet implemented)
+question (the actual question)
+alts (the different choices)
+correct (correct choice number)
 
 Example usage:
+
 python quizzing.py philosophy.csv [-n number of questions]
+
 """
 
 import csv
