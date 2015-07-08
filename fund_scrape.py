@@ -13,7 +13,7 @@ import collections
 
 def init_webdriver():
 
-    #Starts the webdriver.
+    """Starts the webdriver."""
 
     global driver
     driver = webdriver.Firefox()
@@ -21,7 +21,7 @@ def init_webdriver():
 
 def exit_webdriver():
 
-    #Closes the webdriver.
+    """Closes the webdriver."""
 
     driver.close()
     driver.quit()
@@ -30,8 +30,11 @@ def exit_webdriver():
 def scrape_specific_fund(fund_list):
 
     """
-    Collects info on specific fund(s). fund_list needs to be a list with strings that match the last part of the url from avanza.se.
-    Example: "3101/carnegie-indienfond". Returns a dictionary.
+    Collects info on specific fund(s).
+    fund_list is a list of strings that match the last part of the url
+    from avanza.se. Example: "3101/carnegie-indienfond".
+
+    Returns a dictionary.
     """
 
     spec_funds = collections.OrderedDict()
@@ -52,7 +55,10 @@ def scrape_specific_fund(fund_list):
 
 def scrape_toplist():
 
-    #Gathers info from Nordnet on the top 10 performing equity funds from the last week. Returns a dictionary with the results.
+    """
+    Gathers info from Nordnet on the top 10 performing equity funds from the last week.
+    Returns a dictionary with the results.
+    """
 
     toplist_funds = collections.OrderedDict()
 
@@ -72,7 +78,7 @@ def scrape_toplist():
 
 def send_email(toplist, specific):
 
-    #This function sends the collected info to my gmail inbox.
+    """This function sends the collected info to my gmail inbox."""
 
     top_content = "".join("{} - {}% \n".format(k,v) for (k,v) in toplist.items())
     specific_content = "".join("{} - {}% \n".format(k,v) for (k,v) in specific.items())
