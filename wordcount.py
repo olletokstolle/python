@@ -9,7 +9,7 @@ import os
 
 def init(db_name):
 
-    #Connects to the database and creates a table if needed.
+    """Connects to the database and creates a table if needed."""
 
     if os.path.isfile(db_name):
         create = False
@@ -28,7 +28,7 @@ def init(db_name):
 
 def strip_punctuation(filename):
 
-    #Strips punctuation from the input file.
+    """Strips punctuation from the input file."""
 
     remove = dict.fromkeys(map(ord, string.punctuation))
 
@@ -41,7 +41,7 @@ def strip_punctuation(filename):
 
 def count_words(filename):
 
-    #Reads the input file and does the counting.
+    """Reads the input file and does the counting."""
 
     with codecs.open(filename,"r+", "utf-8") as file:
         wordcount = {}
@@ -59,18 +59,23 @@ def count_words(filename):
 
 def get_word_occurence(word):
 
-    #Returns the occurence of a specific word in the database. If fed a string with more than one word it will count all given words separately.
+    """
+    Returns the occurence of a specific word in the database.
+    If fed a string with more than one word it will count all given words separately.
+    """
 
     word = word.lower()
+    result_str = "\n Your chosen word '{}' is encountered {} times in the text."
+    noresult_str = "\n The word '{}' is not found."
 
     if len(word.split(" ")) == 1:
         cursor.execute('''SELECT * FROM words WHERE word = ?''', (word,))
         results = cursor.fetchone()
 
         if results:
-            print("\n Your chosen word '{}' is encountered {} times in the text.".format(results[0], str(results[1])))
+            print(result_str.format(results[0], str(results[1])))
         else:
-            print("\n The word '{}' is not found.".format(word))
+            print(noresult_str.format(word))
 
     elif len(word.split(" ")) > 1:
         for w in word.split(" "):
@@ -78,13 +83,13 @@ def get_word_occurence(word):
             results = cursor.fetchone()
 
             if results:
-                print("\n Your chosen word '{}' is encountered {} times in the text.".format(results[0], str(results[1])))
+                print(result_str.format(results[0], str(results[1])))
             else:
-                print("\n The word '{}' is not found.".format(word))
+                print(noresult_str.format(word))
 
 def close_db():
 
-    #Umm... yeah.
+    """For proper closing!"""
 
     db.close()
 
