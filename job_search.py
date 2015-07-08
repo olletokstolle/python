@@ -1,12 +1,12 @@
+"""
+This program scrapes Workey.se, a swedish search engine for job advertisements. Feed it a list of keywords and it saves the amount of hits in a database file.
+"""
+
 from lxml import html
 import requests
 import time
 import datetime
 import sqlite3
-
-"""
-This program scrapes Workey.se, a swedish search engine for job advertisements. Feed it a list of keywords and it saves the amount of hits in a database file.
-"""
 
 def init(db_name):
 
@@ -29,7 +29,6 @@ def job_searcher(lst):
     today = datetime.date.today()
 
     for keyword in lst:
-
         url = requests.get('http://www.workey.se/lediga-jobb/med.' + keyword)
         tree = html.fromstring(url.text)
         amount = tree.xpath('//*[@id="search_results"]/div[1]/h1/text()')
@@ -39,7 +38,7 @@ def job_searcher(lst):
 
         time.sleep(0.5)
 
-    db.close
+    db.close()
 
 
 if __name__ == '__main__':

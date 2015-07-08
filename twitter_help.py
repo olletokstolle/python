@@ -1,12 +1,13 @@
+"""
+Simple stuff for making it easier to play around with twitter.
+"""
+
 import tweepy
 import codecs
 import os
 import random
 import time
 
-"""
-Simple stuff for making it easier to play around with twitter.
-"""
 
 def auth():
 
@@ -26,7 +27,7 @@ def auth():
 
 def collect_tweets(user):
 
-    #Collects tweets from specific user, txtfile output.
+    #Collects tweets from a specific user, txtfile output.
 
     tweets = tweepy.Cursor(api.user_timeline, id=user).items()
 
@@ -61,9 +62,7 @@ def tweet_queue(txtfile, hour_interval):
         ok = True
 
     while ok:
-
         with codecs.open(txtfile, "r+") as queue:
-
             lines = queue.readlines()
             tweet = random.choice(lines).replace("\n","")
             publish_tweet(tweet)
@@ -71,11 +70,9 @@ def tweet_queue(txtfile, hour_interval):
         #This part below removes the used tweet from the txtfile.
 
         with codecs.open(txtfile, "w+") as queue:
-
             queue.seek(0)
 
             if len(lines) > 1:
-
                 for line in lines:
                     if line[-1:] == "\n":
                         if line != tweet+"\n":
@@ -86,10 +83,7 @@ def tweet_queue(txtfile, hour_interval):
             else:
                 queue.write("")
 
-
         time.sleep((60*60)*hour_interval)
-
-
 
 
 if __name__ == '__main__':

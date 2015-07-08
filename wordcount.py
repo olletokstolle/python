@@ -1,11 +1,11 @@
+"""
+Counts the occurence of words in a text file and saves the result in a database.
+"""
+
 import codecs
 import sqlite3
 import string
 import os
-
-"""
-Counts the occurence of words in a text file and saves the result in a database.
-"""
 
 def init(db_name):
 
@@ -44,7 +44,6 @@ def count_words(filename):
     #Reads the input file and does the counting.
 
     with codecs.open(filename,"r+", "utf-8") as file:
-
         wordcount = {}
 
         for word in file.read().split():
@@ -65,7 +64,6 @@ def get_word_occurence(word):
     word = word.lower()
 
     if len(word.split(" ")) == 1:
-
         cursor.execute('''SELECT * FROM words WHERE word = ?''', (word,))
         results = cursor.fetchone()
 
@@ -75,7 +73,6 @@ def get_word_occurence(word):
             print("\n The word '{}' is not found.".format(word))
 
     elif len(word.split(" ")) > 1:
-
         for w in word.split(" "):
             cursor.execute('''SELECT * FROM words WHERE word = ?''', (w,))
             results = cursor.fetchone()

@@ -1,13 +1,12 @@
-import requests
-from bs4 import BeautifulSoup
-import sqlite3
-import os
-
 """
 Scraper for imdb.com. Collects info (title, year, rating, amount of votes) on all directed films of a given director.
 Saves the results in a sqlite database.
 """
 
+import requests
+from bs4 import BeautifulSoup
+import sqlite3
+import os
 
 def init(db_name):
 
@@ -69,7 +68,6 @@ def scrape_director(imdb_id):
 
                     cursor.execute('''INSERT INTO dir(director, title, year, rating, users) VALUES(?, ?, ?, ?, ?)''', (name, title, year, rating, users ))
                     db.commit()
-
                 except IndexError:
                     pass
 

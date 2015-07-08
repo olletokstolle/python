@@ -1,11 +1,3 @@
-import csv
-import random
-import time
-import os
-import argparse
-import colorama
-from colorama import Back, Fore
-
 """
 Simple multiple choice quiz program for answering questions. Could potentially be useful for studying, I guess.
 
@@ -16,12 +8,21 @@ Example usage:
 python quizzing.py philosophy.csv [-n number of questions]
 """
 
+import csv
+import random
+import time
+import os, sys
+import argparse
+import colorama
+from colorama import Back, Fore
+
 def init():
 
     #Just a fancy welcome to the quiz-thing.
 
     colorama.init()
     os.system("clear")
+
     print(Fore.MAGENTA + "\n Welcome to...")
     print(Fore.GREEN +"""
        ██████╗ ██╗   ██╗██╗███████╗
@@ -45,11 +46,9 @@ def quiz(filename, num_questions=10):
     score = 0
 
     with open(filename) as csv_object:
-
         reader = list(csv.DictReader(csv_object, delimiter=';'))
 
         for question in range(num_questions):
-
             row = random.choice(reader)
             print(" Question #{}:\n\n {} \n\n Choices:\n\n {} \n".format(question+1,row["question"],row["alts"]))
             answer = input(" Which number is correct? >> ")
@@ -57,7 +56,6 @@ def quiz(filename, num_questions=10):
             if answer == row["correct"]:
                 score += 1
                 print(Fore.BLACK + Back.GREEN +"\n Correct answer. Current score: {} ({}%)\n".format(score,round((score/(question+1)*100),2)))
-
             else:
                 print(Fore.WHITE + Back.RED +"\n Incorrect answer. Current score: {} ({}%)\n".format(score,round((score/(question+1)*100),2)))
 
@@ -67,7 +65,7 @@ def quiz(filename, num_questions=10):
 
         print("\n Quiz finished. Final score: {} ({}% correct)\n".format(score,round((score/(question+1)*100),2)))
         os.system("""bash -c 'read -s -n 1 -p " Press any key to stop quizzing.\n"'""")
-        quit()
+        sys.exit()
 
 
 

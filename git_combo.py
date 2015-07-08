@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 
-import subprocess
-import time
-import argparse
-
 """
 Simple commit+push combo script.
 
-Usage:
-
-python git_combo.py "commit message"
+Usage: python git_combo.py "commit message"
 """
+
+import subprocess
+import time
+import argparse
 
 def git_combo(commit_message):
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-import argparse
-
 """
 Updates the table in my README.md.
 
 Usage: python update_readme.py "filename" "description"
 
 """
+
+import argparse
 
 def update_readme(filename, desc):
 
