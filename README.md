@@ -12,3 +12,4 @@ This is where I put most of my short python scripts.
 | update_readme.py | Updates this table. |
 | quizzing.py | Multiple choice quiz program. |
 | fund_scrape.py | Collects equity fund data. |
+| reddit_voat.py | Reddit/Voat stuff. |
