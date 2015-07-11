@@ -6,7 +6,7 @@ omdb-API wrapper.
 import requests
 import json
 
-class Movie():
+class Movie(object):
 
     def __init__(self, string):
         self.get_data(string)
