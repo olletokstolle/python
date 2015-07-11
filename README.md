@@ -13,3 +13,5 @@ This is where I put most of my short python scripts.
 | quizzing.py | Multiple choice quiz program. |
 | fund_scrape.py | Collects equity fund data. |
 | reddit_voat.py | Reddit/Voat stuff. |
+| omdb.py | Wrapper for the OMDb API. |
+| movie_lookup.py | Movie lookup script. |
