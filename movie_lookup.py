@@ -3,7 +3,7 @@
 """
 Movie lookup script.
 
-Usage:
+Usage: ./movie_lookup.py [-v] title
 """
 
 import argparse
