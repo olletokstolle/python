@@ -15,3 +15,4 @@ This is where I put most of my short python scripts.
 | reddit_voat.py | Reddit/Voat stuff. |
 | omdb.py | Wrapper for the OMDb API. |
 | movie_lookup.py | Movie lookup script. |
+| palindrom.py | Math-related. |
